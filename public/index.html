@@ -16,19 +16,19 @@
 
 
 <script>
-    let speed = 500;
+    var speed = 500;
 
-    let scale = d3.scale.linear()
+    var scale = d3.scale.linear()
             .domain([1, 10])
             .range([0, 400]);
 
-    let svg = d3.select(('body')).append('svg')
+    var svg = d3.select(('body')).append('svg')
             .attr('width', 500)
             .attr('height', 250);
 
     function render(data, color) {
         // Bind
-        let rects = svg.selectAll('rect').data(data);
+        var rects = svg.selectAll('rect').data(data);
 
         // Enter
         rects.enter().append('rect')
@@ -55,13 +55,13 @@
     }
 
 
-    let timeDelta = speed;
+    var timeDelta = speed;
     function nextFrame() {
-        let color = randomColor({
+        var color = randomColor({
             luminostiy: 'dark'
         });
-        let numbers = [];
-        for (let j = 1; j < 11; j++) {
+        var numbers = [];
+        for (var j = 1; j < 11; j++) {
             if (Math.random() > 0.5) {
                 numbers.push(j + Math.random() / 2);
             }
@@ -69,7 +69,7 @@
 
         render(numbers, color);
 
-        setTimeout(() => {
+        setTimeout(function() {
             nextFrame();
         }, timeDelta);
     }
